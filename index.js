@@ -30,24 +30,28 @@ function getResponse() {
   // a word or letter
   while (bodyParts.length > 0 && guessedWord != words[randomIndex]) {
     console.log(`Hung Body Parts: ${hungBodyParts}`);
-    console.log(`Correct Letters Guesses: ${alphaGuessedCorrect}`);
-    console.log(`Incorrect Letters Guesses: ${alphaGuessedIncorrect}`);
-    wordOrLetter = prompt (`Would you like to guess the word or a letter? `);
+    console.log(`Correct Letter Guesses: ${alphaGuessedCorrect}`);
+    console.log(`Incorrect Letter Guesses: ${alphaGuessedIncorrect}`);
+    wordOrLetter = prompt (`Would you like to guess the word or a letter? (word/letter) `);
+    var lowerCase = wordOrLetter.toLowerCase();
 
     // If User wants to guess the word
-    if (wordOrLetter === "word") {
+    if (lowerCase === "word") {
       guessedWord = prompt (`What word would you like to guess? `)
+      // lowerCase variable is now storing the guess
+      lowerCase = guessedWord.toLowerCase();
 
       // Word is guessed correctly
       // Congrats messaged is outputed and program closes
-      if (guessedWord === words[randomIndex]) {
+      if (lowerCase === words[randomIndex]) {
         console.log(`Congrats! ${words[randomIndex]} was the word!`);
+        break;
       }
 
       // Word is guessed incorrectly
       // Last word from the bodyParts array is removed and put in hungBodyParts
       // numberGuesses left decreases by 1
-      else if (guessedWord != words[randomIndex]) {
+      else if (lowerCase != words[randomIndex]) {
         hungBodyParts.push(bodyParts.pop());
         numberGuesses -= 1;
         console.log(`Incorrect. You have ${numberGuesses} guesses left`);
@@ -55,8 +59,9 @@ function getResponse() {
     }
 
     // If user wants to guess individual letters of the word
-    else if (wordOrLetter === "letter") {
+    else if (lowerCase === "letter") {
       guessedLetter = prompt (`What letter would you like to guess? `);
+      lowerCase = guessedLetter.toLowerCase();
 
       // Loop: goes through each character of words[randomIndex]
       // Need something better that can check all letters in words[randomIndex] at same time
@@ -65,10 +70,10 @@ function getResponse() {
         // Letter guessed correctly
         // Guessed letter is put in alphaGuessed array
         // numberGuesses does not decrease
-        if (words[randomIndex].charAt(char) === guessedLetter) {
+        if (words[randomIndex].charAt(char) === lowerCase) {
           // guessedLetter += word[randomIndex];
-          alphaGuessedCorrect.push(guessedLetter);
-          console.log(`Correct. The word contains ${guessedLetter}.
+          alphaGuessedCorrect.push(lowerCase);
+          console.log(`Correct. The word contains ${lowerCase}.
           You have ${numberGuesses} guesses left.`);
           break;
         }
@@ -79,7 +84,7 @@ function getResponse() {
         // numberGuesses left decreases by 1
         else {
           hungBodyParts.push(bodyParts.pop());
-          alphaGuessedIncorrect.push(guessedLetter);
+          alphaGuessedIncorrect.push(lowerCase);
           numberGuesses -= 1;
           console.log(`Incorrect. You have ${numberGuesses} guesses left.`);
           break;
@@ -87,7 +92,9 @@ function getResponse() {
       }
     }
 
+    // If user enters an unrecognized command when prompted to choose word or letter
     else {
+      console.log(`Please choose "word" or "letter".`);
     } // else
   } // while
 } // function

@@ -11,3 +11,4 @@
 * Empty Array that stores correctly and incorrectly guessed letters
 * While loop that keeps the user guessing and removes a body part
 * After each guess, the user is asked if they want to guess the word or a letter
+* Any user input is converted to lowercase
