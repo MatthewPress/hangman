@@ -52,10 +52,10 @@ function getResponse() {
       }
 
       // Word is guessed incorrectly
+      // Last word from the bodyParts array is removed and put in hungBodyParts
+      // numberGuesses left decreases by 1
       else if (lowerCase != words[randomIndex]) {
-        // Last word from the bodyParts array is removed and put in hungBodyParts
         hungBodyParts.push(bodyParts.pop());
-        // numberGuesses left decreases by 1
         numberGuesses -= 1;
         console.log(`Incorrect. You have ${numberGuesses} guesses left`);
       }
@@ -90,10 +90,10 @@ function getResponse() {
       }
 
       // User enters more than one letter
+      // Last word from the bodyParts array is removed and put in hungBodyParts
+      // numberGuesses left decreases by 1
       else if (lowerCase.length >= 2){
-        // Last word from the bodyParts array is removed and put in hungBodyParts
         hungBodyParts.push(bodyParts.pop());
-        // numberGuesses left decreases by 1
         numberGuesses -= 1;
         console.log(`Only input one letter at a time. You have ${numberGuesses} guesses left.`);
       }
