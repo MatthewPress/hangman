@@ -1,6 +1,7 @@
 # Hangman
 ## Uncompleted Tasks
-* Show all correctly guessed letters and where they're placed in the word (dictionary?)
+* Does not display correctly guessed letters when there are duplicates in a word
+* When all letters have been correctly guessed, the program should also say congrats and close. Right now it only does so when you choose "word" and enter the correct word
 ## Completed Tasks
 * Git and GitHub (branches, add contributors)
 * Prompt-sync
@@ -15,3 +16,4 @@
 * Any user input is converted to lowercase
 * Check a guessed letter against all characters in the word at the same time
 * A letter guess is not correct if the user inputs multiple letters in one prompt
+* Shows all correctly guessed letters and where they're placed in the word

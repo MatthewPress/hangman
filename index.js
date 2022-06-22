@@ -14,8 +14,11 @@ var bodyParts = ["Right Leg", "Left Leg", "Right Arm", "Left Arm", "Body", "Head
 var hungBodyParts = [];
 var numberGuesses = bodyParts.length;
 
-// Create arrays that tracks correctly and incorrectly guessed letters
+// Create arrays that track correctly and incorrectly guessed letters
 var alphaGuessedCorrect = [];
+for (var i = 0; i < words[randomIndex].length; i++) {
+  alphaGuessedCorrect.push("_");
+}
 var alphaGuessedIncorrect = [];
 
 // Create variables for prompts
@@ -42,17 +45,17 @@ function getResponse() {
       lowerCase = guessedWord.toLowerCase();
 
       // Word is guessed correctly
-      // Congrats messaged is outputed and program closes
+      // Congrats message is outputed and program closes
       if (lowerCase === words[randomIndex]) {
         console.log(`Congrats! ${words[randomIndex]} was the word!`);
         break;
       }
 
       // Word is guessed incorrectly
-      // Last word from the bodyParts array is removed and put in hungBodyParts
-      // numberGuesses left decreases by 1
       else if (lowerCase != words[randomIndex]) {
+        // Last word from the bodyParts array is removed and put in hungBodyParts
         hungBodyParts.push(bodyParts.pop());
+        // numberGuesses left decreases by 1
         numberGuesses -= 1;
         console.log(`Incorrect. You have ${numberGuesses} guesses left`);
       }
@@ -65,12 +68,34 @@ function getResponse() {
 
       // Letter guessed correctly
       // Checks if string words[randomIndex] INCLUDES string lowerCase
-      // Guessed letter is put in alphaGuessed array
       // numberGuesses does not decrease
       if (words[randomIndex].includes(lowerCase) === true && lowerCase.length < 2) {
-        alphaGuessedCorrect.push(lowerCase);
-        console.log(`Correct. The word contains ${lowerCase}.
+        // Splits words[randomIndex] string into an array of strings
+        var wordStringSplit = words[randomIndex].split("");
+        // Checks and finds the index position of all matching letters
+        var indexLetter = [];
+        for (var i = 0; i < wordStringSplit.length; i++) {
+          if (wordStringSplit[i] === lowerCase) {
+            indexLetter.push(i);
+          }
+        }
+        // Puts the letter at the correct array position in alphaGuessedCorrect
+        // Problem: Doesn't output when there are multiple instances of same letter
+        for (var insertLetter = 0; insertLetter < indexLetter.length; insertLetter++) {
+          alphaGuessedCorrect[indexLetter] = lowerCase;
+        }
+        // Output includes the index position of all matching elements
+        console.log(`Correct. The word contains ${lowerCase} at the ${indexLetter} index position(s).
         You have ${numberGuesses} guesses left.`);
+      }
+
+      // User enters more than one letter
+      else if (lowerCase.length >= 2){
+        // Last word from the bodyParts array is removed and put in hungBodyParts
+        hungBodyParts.push(bodyParts.pop());
+        // numberGuesses left decreases by 1
+        numberGuesses -= 1;
+        console.log(`Only input one letter at a time. You have ${numberGuesses} guesses left.`);
       }
 
       // Letter guessed incorrectly
