@@ -67,7 +67,7 @@ function getResponse() {
       // Checks if string words[randomIndex] INCLUDES string lowerCase
       // Guessed letter is put in alphaGuessed array
       // numberGuesses does not decrease
-      if (words[randomIndex].includes(lowerCase) === true) {
+      if (words[randomIndex].includes(lowerCase) === true && lowerCase.length < 2) {
         alphaGuessedCorrect.push(lowerCase);
         console.log(`Correct. The word contains ${lowerCase}.
         You have ${numberGuesses} guesses left.`);
