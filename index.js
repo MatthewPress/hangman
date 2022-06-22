@@ -63,32 +63,25 @@ function getResponse() {
       guessedLetter = prompt (`What letter would you like to guess? `);
       lowerCase = guessedLetter.toLowerCase();
 
-      // Loop: goes through each character of words[randomIndex]
-      // Need something better that can check all letters in words[randomIndex] at same time
-      for (var char = 0; char < words[randomIndex].length; char++) {
+      // Letter guessed correctly
+      // Checks if string words[randomIndex] INCLUDES string lowerCase
+      // Guessed letter is put in alphaGuessed array
+      // numberGuesses does not decrease
+      if (words[randomIndex].includes(lowerCase) === true) {
+        alphaGuessedCorrect.push(lowerCase);
+        console.log(`Correct. The word contains ${lowerCase}.
+        You have ${numberGuesses} guesses left.`);
+      }
 
-        // Letter guessed correctly
-        // Guessed letter is put in alphaGuessed array
-        // numberGuesses does not decrease
-        if (words[randomIndex].charAt(char) === lowerCase) {
-          // guessedLetter += word[randomIndex];
-          alphaGuessedCorrect.push(lowerCase);
-          console.log(`Correct. The word contains ${lowerCase}.
-          You have ${numberGuesses} guesses left.`);
-          break;
-        }
-
-        // Letter guessed incorrectly
-        // Last word from the bodyParts array is removed and put in hungBodyParts
-        // Guessed letter is put in alphaGuessed array
-        // numberGuesses left decreases by 1
-        else {
-          hungBodyParts.push(bodyParts.pop());
-          alphaGuessedIncorrect.push(lowerCase);
-          numberGuesses -= 1;
-          console.log(`Incorrect. You have ${numberGuesses} guesses left.`);
-          break;
-        }
+      // Letter guessed incorrectly
+      // Last word from the bodyParts array is removed and put in hungBodyParts
+      // Guessed letter is put in alphaGuessed array
+      // numberGuesses left decreases by 1
+      else {
+        hungBodyParts.push(bodyParts.pop());
+        alphaGuessedIncorrect.push(lowerCase);
+        numberGuesses -= 1;
+        console.log(`Incorrect. You have ${numberGuesses} guesses left.`);
       }
     }
 
