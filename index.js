@@ -33,6 +33,7 @@ function getResponse() {
   // a word or letter
   while (bodyParts.length > 0 && guessedWord != words[randomIndex]) {
     console.log(`Hung Body Parts: ${hungBodyParts}`);
+    console.log(`Number of Guesses Left: ${numberGuesses}`)
     console.log(`Correct Letter Guesses: ${alphaGuessedCorrect}`);
     console.log(`Incorrect Letter Guesses: ${alphaGuessedIncorrect}`);
     wordOrLetter = prompt (`Would you like to guess the word or a letter? (word/letter) `);
@@ -57,7 +58,7 @@ function getResponse() {
       else if (lowerCase != words[randomIndex]) {
         hungBodyParts.push(bodyParts.pop());
         numberGuesses -= 1;
-        console.log(`Incorrect. You have ${numberGuesses} guesses left`);
+        console.log(`Incorrect.`);
       }
     }
 
@@ -85,8 +86,7 @@ function getResponse() {
           alphaGuessedCorrect[indexLetter] = lowerCase;
         }
         // Output includes the index position of all matching elements
-        console.log(`Correct. The word contains ${lowerCase} at the ${indexLetter} index position(s).
-        You have ${numberGuesses} guesses left.`);
+        console.log(`Correct. The word contains ${lowerCase} at the ${indexLetter} index position(s).`);
       }
 
       // User enters more than one letter
@@ -95,7 +95,7 @@ function getResponse() {
       else if (lowerCase.length >= 2){
         hungBodyParts.push(bodyParts.pop());
         numberGuesses -= 1;
-        console.log(`Only input one letter at a time. You have ${numberGuesses} guesses left.`);
+        console.log(`Only input one letter at a time.`);
       }
 
       // Letter guessed incorrectly
@@ -106,7 +106,7 @@ function getResponse() {
         hungBodyParts.push(bodyParts.pop());
         alphaGuessedIncorrect.push(lowerCase);
         numberGuesses -= 1;
-        console.log(`Incorrect. You have ${numberGuesses} guesses left.`);
+        console.log(`Incorrect.`);
       }
     }
 
