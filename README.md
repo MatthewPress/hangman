@@ -1,9 +1,13 @@
 # Hangman
-## Tasks
+## Uncompleted Tasks
+* Check a guessed letter against all characters in the word at the same time
+* Show all correctly guessed letters and where they're placed in the word
+## Completed Tasks
 * Git and GitHub
 * Promptsync
-* Array of body parts
-* Array of a bunch of words
-* while loop that keeps the user guessing and removes a body part
-* Look through the word to compare the users guess to the word's characters
-* Empty array that contains all guessed letters (push array method)
+* Array of body parts to be crossed off
+* Array of words for program to randomly choose
+* Empty Array that stores hung body parts
+* Empty Array that stores correctly and incorrectly guessed letters
+* While loop that keeps the user guessing and removes a body part
+* After each guess, the user is asked if they want to guess the word or a letter
