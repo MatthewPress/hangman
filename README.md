@@ -1,7 +1,7 @@
 # Hangman
 ## Uncompleted Tasks
-* Does not display correctly guessed letters when there are duplicates in a word
 * When all letters have been correctly guessed, the program should also say congrats and close. Right now it only does so when you choose "word" and enter the correct word
+* Program can be reset either when the word is guessed correctly or number of attempts is exceeded
 ## Completed Tasks
 * Git and GitHub (branches, add contributors)
 * Prompt-sync

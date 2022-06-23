@@ -81,9 +81,8 @@ function getResponse() {
           }
         }
         // Puts the letter at the correct array position in alphaGuessedCorrect
-        // Problem: Doesn't output when there are multiple instances of same letter
         for (var insertLetter = 0; insertLetter < indexLetter.length; insertLetter++) {
-          alphaGuessedCorrect[indexLetter] = lowerCase;
+           alphaGuessedCorrect[indexLetter[insertLetter]] = lowerCase;
         }
         // Output includes the index position of all matching elements
         console.log(`Correct. The word contains ${lowerCase} at the ${indexLetter} index position(s).`);
