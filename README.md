@@ -1,7 +1,6 @@
 # Hangman
 ## Uncompleted Tasks
-* When all letters have been correctly guessed, the program should also say congrats and close. Right now it only does so when you choose "word" and enter the correct word
-* Program can be reset either when the word is guessed correctly or number of attempts is exceeded
+*
 ## Completed Tasks
 * Git and GitHub (branches, add contributors)
 * Prompt-sync
@@ -17,3 +16,5 @@
 * Check a guessed letter against all characters in the word at the same time
 * A letter guess is not correct if the user inputs multiple letters in one prompt
 * Shows all correctly guessed letters and where they're placed in the word
+* When all letters or the word have been correctly guessed, the program says congrats and closes
+* When either the word is guessed correctly or number of attempts is exceeded, the game brings up a prompt to reset or quit
